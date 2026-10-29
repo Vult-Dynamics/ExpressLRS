@@ -1,64 +1,56 @@
-![Banner](https://github.com/ExpressLRS/ExpressLRS-Hardware/blob/master/img/banner.png?raw=true)
+<p align="center">
+  <img src="docs/vult/vult-banner.png" alt="Vult Dynamics RX900 and RX24 ExpressLRS receivers" width="100%">
+</p>
 
-<center>
+<p align="center">
+  <a href="https://vultdynamics.com">Website</a> ·
+  <a href="https://vultdynamics.com/products/rx900">RX900</a> ·
+  <a href="https://vultdynamics.com/products/rx24">RX24</a> ·
+  <a href="https://github.com/Vult-Dynamics/ExpressLRS/releases">Firmware releases</a> ·
+  <a href="mailto:info@vultdynamics.com">Contact</a>
+</p>
 
-[![Release](https://img.shields.io/github/v/release/ExpressLRS/ExpressLRS?style=flat-square)](https://github.com/ExpressLRS/ExpressLRS/releases)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/ExpressLRS/ExpressLRS/build.yml?logo=github&style=flat-square)](https://github.com/ExpressLRS/ExpressLRS/actions)
-[![License](https://img.shields.io/github/license/ExpressLRS/ExpressLRS?style=flat-square)](https://github.com/ExpressLRS/ExpressLRS/blob/master/LICENSE)
-[![Stars](https://img.shields.io/github/stars/ExpressLRS/ExpressLRS?style=flat-square)](https://github.com/ExpressLRS/ExpressLRS/stargazers)
-[![Chat](https://img.shields.io/discord/596350022191415318?color=%235865F2&logo=discord&logoColor=%23FFFFFF&style=flat-square)](https://discord.gg/expresslrs)
+# Vult Dynamics ExpressLRS
 
-</center>
+This is the Vult Dynamics build of [ExpressLRS](https://github.com/ExpressLRS/ExpressLRS). It lets you run standard ExpressLRS firmware on NDAA-compliant receiver hardware designed and assembled in the USA.
 
-## Support ExpressLRS
-You can support ExpressLRS by contributing code, testing new features, sharing your ideas, or helping others get started. We are exceptionally grateful for those who donate their time to our passion.
+Most ExpressLRS hardware today uses Espressif ESP32 and ESP8285 chips, and current ExpressLRS releases (4.x) only support those. Vult Dynamics receivers use STMicroelectronics STM32 microcontrollers and Semtech radios instead, which keeps covered-country silicon off the board. ExpressLRS 3.5 is the last release line that supports STM32, so this repository keeps that line maintained for Vult hardware.
 
-If you don't have time to lend a hand in that way but still want to have an impact, consider donating. Donations are used for infrastructure costs and to buy test equipment needed to further the project and make it securely accessible. ExpressLRS accepts donations through Open Collective, which provides recognition of donors and transparency on how that support is utilized.
+**Use the `vult/3.5` branch.** It is ExpressLRS 3.5.6 plus the Vult receiver targets, and nothing else. Every Vult release is a signed tag (`vult-*`) built from this branch.
 
-[![Open Collective backers](https://img.shields.io/opencollective/backers/expresslrs?label=Open%20Collective%20backers&style=flat-square)](https://opencollective.com/expresslrs)
+## Products
 
-We appreciate all forms of contribution and hope you will join us on Discord!
+| | Receiver | Band | Radio / MCU | Size |
+| --- | --- | --- | --- | --- |
+| <img src="docs/vult/rx900.png" width="180"> | [**Vult RX900**](https://vultdynamics.com/products/rx900) | 902 to 928 MHz | Semtech SX1276 / STM32F103 | 27 x 17 mm |
+| <img src="docs/vult/rx24.png" width="150"> | [**Vult RX24**](https://vultdynamics.com/products/rx24) | 2.4 GHz | Semtech SX1280 / STM32L432 | 22 x 15 mm |
 
-## Website
-For general information on the project please refer to our guides on the [website](https://www.expresslrs.org/), and our [FAQ](https://www.expresslrs.org/2.0/faq/)
+Both receivers connect to a flight controller through four solder pads (5V, GND, TX, RX) using CRSF, and take an antenna on a U.FL connector. The NDAA declaration for these products is available on request.
 
-## About
+## Compatibility
 
-ExpressLRS is an open source Radio Link for Radio Control applications. Designed to be the best FPV Racing link, it is based on the fantastic Semtech **SX127x**/**SX1280** LoRa hardware combined with an Espressif or STM32 Processor. Using LoRa modulation as well as reduced packet size it achieves best in class range and latency. It achieves this using a highly optimized over-the-air packet structure, giving simultaneous range and latency advantages. It supports both 900 MHz and 2.4 GHz links, each with their own benefits. 900 MHz supports a maximum of 200 Hz packet rate, with higher penetration. 2.4 GHz supports a blistering fast 1000 Hz on [EdgeTX](http://edgetx.org/). With hundreds of different hardware targets from a wide range of hardware manufacturers, the choice of hardware is constantly growing, with different hardware suited to different requirements.
+- Works with any transmitter running **ExpressLRS 3.x**. ExpressLRS 4.x transmitters do not link with 3.x receivers, so keep your transmitter on 3.x.
+- Binding: set the same binding phrase on the transmitter and receiver, or power-cycle the receiver three times to enter bind mode.
+- Betaflight, INAV and ArduPilot: set the receiver UART to Serial RX with the CRSF protocol.
 
-## Configurator
-To configure your ExpressLRS hardware, the ExpressLRS Configurator can be used, which is found here:
+## Flashing and updates
 
-https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/
+Vult receivers ship with firmware installed. To update:
 
-## Community
-We have both a [Discord Server](https://discord.gg/expresslrs) and [Facebook Group](https://www.facebook.com/groups/636441730280366), which have great support for new users and constant ongoing development discussion
+1. Download the latest release for your receiver from [Releases](https://github.com/Vult-Dynamics/ExpressLRS/releases).
+2. Check the file against the published SHA-256 hash and signature in the release notes.
+3. Flash it through your flight controller using the [ExpressLRS Configurator](https://github.com/ExpressLRS/ExpressLRS-Configurator/releases) (Betaflight passthrough), with the receiver connected to the flight controller.
 
-## Features
+## What is in this repository
 
-ExpressLRS has the following features:
+| Branch or tag | Purpose |
+| --- | --- |
+| `vult/3.5` (default) | Vult maintained branch: ExpressLRS 3.5.6 plus Vult targets |
+| `vult-*` tags | Signed Vult firmware releases |
+| `master` | Untouched copy of upstream ExpressLRS, kept for reference |
 
-- Up to 1000 Hz Packet Rate
-- Telemetry (Betaflight Lua Compatibility)
-- Wifi Updates
-- Bluetooth or WiFi Sim Joystick
-- Oled & TFT Displays
-- 2.4 GHz, 900 MHz, and Dual-Band RC Link
-- SMD Antenna - allows for easier installation into micros
-- Supported receiver protocols: CRSF, SBUS, SUMD, HoTT Telemetry, and PWM
-- VTX and VRX Frequency adjustments from the Lua
-- Bind Phrases - no need for button binding
+## Credits and license
 
-with many more features on the way!
+ExpressLRS is developed by the ExpressLRS team and community. This fork is maintained by Vult Dynamics LLC and is not affiliated with or endorsed by the ExpressLRS project. Please send questions about Vult hardware to [info@vultdynamics.com](mailto:info@vultdynamics.com), not to the ExpressLRS team.
 
-## Supported Hardware
-
-ExpressLRS currently supports hardware from a wide range of manufacturers. In principle, the targets listed in the [ExpressLRS Configurator](https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/) are tested and supported hardware.
-
-Please refer to the [Hardware Selection] page (https://www.expresslrs.org/hardware/hardware-selection/) on the website for guidance. We do not manufacture any of our hardware, so we can only provide limited support for faulty hardware.
-
-## Developers
-
-If you are a developer and would like to contribute to the project, feel free to join the [discord](https://discord.gg/expresslrs) and chat about bugs and issues. You can also look for issues at the [GitHub Issue Tracker](https://github.com/ExpressLRS/ExpressLRS/issues). The best thing to do is to submit a Pull Request to the GitHub Repository.
-
-![](https://github.com/ExpressLRS/ExpressLRS-Hardware/blob/master/img/community.png?raw=true)
+ExpressLRS and this fork are licensed under the [GNU General Public License v3.0](LICENSE). The complete source code for all firmware Vult Dynamics ships is published here, and you are free to build and flash your own modified versions.
