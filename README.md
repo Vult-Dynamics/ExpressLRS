@@ -4,7 +4,8 @@
 
 <p align="center">
   <a href="https://www.vultdynamics.com">Website</a> ·
-  <a href="https://www.vultdynamics.com/products/electronics/elrs-rx-nano">ELRS receivers</a> ·
+  <a href="https://www.vultdynamics.com/products/electronics/915mhz-elrs-rx-nano">RX900 (915 MHz)</a> ·
+  <a href="https://www.vultdynamics.com/products/electronics/2-4ghz-elrs-rx-nano">RX24 (2.4 GHz)</a> ·
   <a href="https://github.com/Vult-Dynamics/ExpressLRS/releases">Firmware releases</a> ·
   <a href="mailto:info@vultdynamics.com">Contact</a>
 </p>
@@ -21,8 +22,8 @@ Most ExpressLRS hardware today uses Espressif ESP32 and ESP8285 chips, and curre
 
 | | Receiver | Band | Radio / MCU | Size |
 | --- | --- | --- | --- | --- |
-| <img src="docs/vult/rx900.png" width="180"> | [**Vult RX900**](https://www.vultdynamics.com/products/electronics/elrs-rx-nano) | 902 to 928 MHz | Semtech SX1276 / STM32F103 | 27 x 17 mm |
-| <img src="docs/vult/rx24.png" width="150"> | [**Vult RX24**](https://www.vultdynamics.com/products/electronics/elrs-rx-nano) | 2.4 GHz | Semtech SX1280 / STM32L432 | 22 x 15 mm |
+| <img src="docs/vult/rx900.png" width="180"> | [**Vult RX900**](https://www.vultdynamics.com/products/electronics/915mhz-elrs-rx-nano) | 902 to 928 MHz | Semtech SX1276 / STM32F103 | 27 x 17 mm |
+| <img src="docs/vult/rx24.png" width="150"> | [**Vult RX24**](https://www.vultdynamics.com/products/electronics/2-4ghz-elrs-rx-nano) | 2.4 GHz | Semtech SX1280 / STM32L432 | 22 x 15 mm |
 
 Both receivers connect to a flight controller through four solder pads (5V, GND, TX, RX) using CRSF, and take an antenna on a U.FL connector. The NDAA declaration for these products is available on request.
 
